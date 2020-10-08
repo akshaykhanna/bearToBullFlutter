@@ -25,44 +25,23 @@ class _ProductListItemState extends State<ProductListItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 100,
-        child: Column(children: <Widget>[
-          const Divider(height: 5.0),
-          ListTile(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: ListTile(
             title: Text(
               '${widget._product.name}',
               key: const Key(ProductListItem.keyName),
-              style: const TextStyle(
-                fontSize: 17.0,
-              ),
             ),
-            subtitle: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 0),
-                child: Text('${widget._product.price}',
-                    key: const Key(ProductListItem.keyPrice),
-                    style: const TextStyle(
-                      fontSize: 12.0,
-                      color: Colors.deepOrangeAccent,
-                      fontStyle: FontStyle.italic,
-                    ))),
-            trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-              IconButton(
-                key: const Key(ProductListItem.keyRemove),
-                icon: Icon(Icons.remove),
-                onPressed: () => {},
-              ),
-              IconButton(
-                  key: const Key(ProductListItem.keyAdd),
-                  icon: Icon(Icons.add),
-                  onPressed: () => {})
-            ]),
-            leading: Column(
-              children: <Widget>[
-                ProductListItemImageView(url: widget._product.imageUrl)
-              ],
-            ),
-          )
-        ]));
+            subtitle: Text('${widget._product.price}',
+                key: const Key(ProductListItem.keyPrice)),
+            trailing: RaisedButton(onPressed: () {}, child: Text('Buy', style: TextStyle(color: Colors.white)), color: Colors.green),
+            leading: ProductListItemImageView(url: widget._product.imageUrl),
+          ),
+        ),
+      ),
+    );
   }
 }
