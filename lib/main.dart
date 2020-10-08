@@ -1,31 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:starter_flutter/features/products/presentation/bloc/product_list_bloc.dart';
-import 'package:starter_flutter/features/products/presentation/pages/product_list_screen.dart';
-import 'injection_container.dart' as di;
 
 void main() {
-  final serviceLocator = GetIt();
-  di.init(serviceLocator);
-  runApp(MyApp(serviceLocator));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
-  MyApp(GetIt serviceLocator) {
-    di.serviceLocator = serviceLocator;
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Deo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ProductsListScreen(bloc: di.serviceLocator<ProductListBloc>()),
+      home: Scaffold(
+        drawer: Drawer(
+          child: Column(
+            children: [
+              UserAccountsDrawerHeader(
+                  accountName: Text('Flutter Workshop'),
+                  accountEmail: Text('flutter@thoughtworks.com'),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundColor: Colors.yellow,
+                    child: Text('F'),
+                  )),
+              Expanded(
+                child: ListView(
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: ListTile(
+                        title: Text('Home'),
+                        leading: Icon(Icons.home),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: ListTile(
+                        title: Text('Share'),
+                        leading: Icon(Icons.share),
+                      ),
+                    ),
+                    const Divider(),
+                    InkWell(
+                      onTap: () {},
+                      child: ListTile(
+                        title: Text('Settings'),
+                        leading: Icon(Icons.settings),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: ListTile(
+                        title: Text('Logout'),
+                        leading: Icon(Icons.power_settings_new),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+        appBar: AppBar(title: Text('Flutter Workshop')),
+      ),
     );
   }
 }
