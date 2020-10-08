@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:starter_flutter/product.dart';
+import 'dart:convert';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<Product> products = [];
+
+  @override
+  void initState() {
+    getItems();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -62,8 +79,23 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
+        body: products.isEmpty ? Center(child: CircularProgressIndicator()) : ListView.builder(
+          itemCount: products.length,
+          itemBuilder: (BuildContext context, int index) {
+             var product = products[index];
+             return Text(product.name);
+          },
+        ),
         appBar: AppBar(title: Text('Flutter Workshop')),
       ),
     );
+  }
+
+  Future<void> getItems() async {
+    var response = await http.get('http://www.mocky.io/v2/5e01d1cb2f00008000dcd310');
+    var jsonBody = jsonDecode(response.body);
+    setState(() {
+      products = productsFromJson(jsonBody);
+    });
   }
 }
