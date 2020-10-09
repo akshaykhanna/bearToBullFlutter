@@ -33,7 +33,9 @@ class _SortDropDownState extends State<SortDropDown> {
           )
         ],
         onChanged: (value) {
-          _value = value;
+          setState(() {
+            _value = value;
+          });
           widget._onSortPressed(value);
         });
   }
