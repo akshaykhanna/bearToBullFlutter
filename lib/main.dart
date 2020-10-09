@@ -83,7 +83,26 @@ class _MyAppState extends State<MyApp> {
           itemCount: products.length,
           itemBuilder: (BuildContext context, int index) {
              var product = products[index];
-             return Text(product.name);
+             return Padding(
+               padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+               child: Card(
+                 child: Padding(
+                   padding: const EdgeInsets.all(4),
+                   child: ListTile(
+                     title: Text(
+                       product.name,
+                     ),
+                     subtitle: Text(product.price),
+                     trailing: RaisedButton(
+                         onPressed: () {},
+                         child: Text('Buy', style: TextStyle(color: Colors.white)),
+                         color: Colors.green),
+                     leading: SizedBox(
+                         width: 40, height: 40, child: Image.network(product.image, fit: BoxFit.fill)),
+                   ),
+                 ),
+               ),
+             );
           },
         ),
         appBar: AppBar(title: Text('Flutter Workshop')),
