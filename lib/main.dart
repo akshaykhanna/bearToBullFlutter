@@ -111,7 +111,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> getItems() async {
-    var response = await http.get('http://www.mocky.io/v2/5e01d1cb2f00008000dcd310');
+    var response = await http.get('https://run.mocky.io/v3/86714065-50f3-423b-a048-ee58c46733ea');
     var jsonBody = jsonDecode(response.body);
     setState(() {
       products = productsFromJson(jsonBody);
