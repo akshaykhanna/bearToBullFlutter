@@ -31,10 +31,10 @@ class _ProductListState extends State<ProductList> {
     String url = 'https://run.mocky.io/v3/e43bce1b-1288-4c6b-ae5c-aaaf97ba5916';
     switch (_sortValue) {
       case "Z-A":
-        url = 'https://run.mocky.io/v3/86714065-50f3-423b-a048-ee58c46733ea';
+        url = 'https://run.mocky.io/v3/8ad03d4e-2c5c-48dd-a436-fe6412cf919e';
         break;
       case "Price":
-        url = 'https://run.mocky.io/v3/86714065-50f3-423b-a048-ee58c46733ea';
+        url = 'https://run.mocky.io/v3/c533f50f-b670-47cc-9bed-146865706cf4';
         break;
       default:
         break;
