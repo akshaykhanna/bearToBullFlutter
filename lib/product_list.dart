@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:starter_flutter/product.dart';
 import 'package:http/http.dart' as http;
 import 'package:starter_flutter/product_drawer.dart';
 import 'package:starter_flutter/product_list_items.dart';
+import 'package:starter_flutter/sort-dropdown.dart';
 
 class ProductList extends StatefulWidget {
   @override
@@ -68,36 +68,5 @@ class _ProductListState extends State<ProductList> {
         },
       ),
     );
-  }
-}
-
-class SortDropDown extends StatefulWidget {
-  const SortDropDown({
-    @required FunctionStringCallback onSortPressed,
-  }) : _onSortPressed = onSortPressed;
-
-  final FunctionStringCallback _onSortPressed;
-
-  @override
-  _SortDropDownState createState() => _SortDropDownState();
-}
-
-class _SortDropDownState extends State<SortDropDown> {
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton(items: [
-      DropdownMenuItem(
-        child: Text("A-Z"),
-        value: "A-Z",
-      ),
-      DropdownMenuItem(
-        child: Text("Z-A"),
-        value: "Z-A",
-      ),
-      DropdownMenuItem(
-        child: Text("Price"),
-        value: "Price",
-      )
-    ], onChanged: widget._onSortPressed);
   }
 }

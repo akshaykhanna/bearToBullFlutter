@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:starter_flutter/product.dart';
-import 'dart:convert';
 
 import 'package:starter_flutter/product_list.dart';
 
