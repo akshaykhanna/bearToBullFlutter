@@ -1,14 +1,11 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_flutter/product.dart';
 import 'package:starter_flutter/product_drawer.dart';
 import 'package:starter_flutter/product_list_bloc.dart';
 import 'package:starter_flutter/product_list_state.dart';
 import 'package:starter_flutter/sort-dropdown.dart';
 
-import 'product.dart';
 import 'product_list_items.dart';
 
 class ProductList extends StatefulWidget {
@@ -23,8 +20,6 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
-  // ignore: close_sinks
-  final _streamController = StreamController<List<Product>>();
 
   String _sortValue = "A-Z";
 
@@ -66,11 +61,5 @@ class _ProductListState extends State<ProductList> {
                 width: double.infinity);
           }),
     );
-  }
-
-  @override
-  void dispose() {
-    _streamController.sink.close();
-    super.dispose();
   }
 }
