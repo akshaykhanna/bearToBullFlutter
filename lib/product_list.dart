@@ -1,16 +1,23 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starter_flutter/product.dart';
-import 'package:http/http.dart' as http;
 import 'package:starter_flutter/product_drawer.dart';
+import 'package:starter_flutter/product_list_bloc.dart';
+import 'package:starter_flutter/product_list_state.dart';
 import 'package:starter_flutter/sort-dropdown.dart';
 
 import 'product.dart';
 import 'product_list_items.dart';
 
 class ProductList extends StatefulWidget {
+  const ProductList({@required ProductListBloc bloc})
+      : assert(bloc != null),
+        _bloc = bloc;
+
+  final ProductListBloc _bloc;
+
   @override
   _ProductListState createState() => _ProductListState();
 }
@@ -23,57 +30,40 @@ class _ProductListState extends State<ProductList> {
 
   @override
   void initState() {
-    _getItems();
     super.initState();
-  }
-
-  Future<void> _getItems() async {
-    String url = 'https://run.mocky.io/v3/e43bce1b-1288-4c6b-ae5c-aaaf97ba5916';
-    switch (_sortValue) {
-      case "Z-A":
-        url = 'https://run.mocky.io/v3/8ad03d4e-2c5c-48dd-a436-fe6412cf919e';
-        break;
-      case "Price":
-        url = 'https://run.mocky.io/v3/c533f50f-b670-47cc-9bed-146865706cf4';
-        break;
-      default:
-        break;
-    }
-    var response = await http.get(url);
-    var jsonBody = jsonDecode(response.body);
-    _streamController.sink.add(productsFromJson(jsonBody));
   }
 
   onSortPressed() => (value) {
         _sortValue = value;
-        _getItems();
+        widget._bloc.add(SortProducts(value));
       };
 
   @override
   Widget build(BuildContext context) {
+    widget._bloc.add(SortProducts());
     return Scaffold(
       drawer: ProductDrawer(),
       appBar: AppBar(
-        title: SortDropDown(
+        title: Text("Demo"),
+        actions: [ SortDropDown(
           onSortPressed: onSortPressed(),
-        ),
+        )],
       ),
-      body: StreamBuilder(
-          stream: _streamController.stream,
-          builder: (context, snapShot) {
-            switch (snapShot.connectionState) {
-              case ConnectionState.none:
-                return Text("None");
-              case ConnectionState.waiting:
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              case ConnectionState.active:
-                return ProductListItems(products: snapShot.data);
-              default:
-                return Text("Unknown failure");
-                break;
+      body: BlocBuilder<ProductListBloc, ProductListState>(
+          bloc: widget._bloc,
+          builder: (BuildContext context, ProductListState productsListState) {
+            if (productsListState is ProductListLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (productsListState is ProductListLoaded) {
+              return ProductListItems(products: productsListState.products);
             }
+
+            return Container(
+                color: Colors.white,
+                height: double.infinity,
+                width: double.infinity);
           }),
     );
   }

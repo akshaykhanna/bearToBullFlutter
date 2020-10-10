@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:starter_flutter/product_list.dart';
+import 'package:starter_flutter/product_list_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ProductList(),
+      home: ProductList(bloc: ProductListBloc()),
     );
   }
 }
