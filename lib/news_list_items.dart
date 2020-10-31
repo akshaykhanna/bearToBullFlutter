@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:starter_flutter/product.dart';
 
-class ProductListItems extends StatelessWidget {
-  const ProductListItems({
+class NewsListItems extends StatelessWidget {
+  const NewsListItems({
     Key key,
     @required List<Product> products,
   })  : _products = products,

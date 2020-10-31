@@ -1,22 +1,19 @@
-
-
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starter_flutter/product.dart';
-import 'package:starter_flutter/product_list_state.dart';
+import 'package:starter_flutter/news_list_state.dart';
 import 'package:http/http.dart' as http;
 
-class ProductListBloc extends Bloc<SortProducts, ProductListState> {
+class NewsListBloc extends Bloc<SortNews, NewsListState> {
+  @override
+  get initialState => NewsListInitial();
 
   @override
-  get initialState => ProductListInitial();
-
-  @override
-  Stream<ProductListState> mapEventToState(SortProducts event) async* {
-    yield ProductListLoading();
+  Stream<NewsListState> mapEventToState(SortNews event) async* {
+    yield NewsListLoading();
     final output = await _getItems(event.sortValue);
-    yield ProductListLoaded(output);
+    yield NewsListLoaded(output);
   }
 
   Future<List<Product>> _getItems([var _sortValue]) async {
