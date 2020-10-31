@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ProductDrawer extends StatelessWidget {
-  const ProductDrawer({
+class NewsDrawer extends StatelessWidget {
+  const NewsDrawer({
     Key key,
   }) : super(key: key);
 

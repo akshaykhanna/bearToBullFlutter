@@ -35,7 +35,7 @@ class _NewsListState extends State<NewsList> {
   Widget build(BuildContext context) {
     widget._bloc.add(SortNews());
     return Scaffold(
-      drawer: ProductDrawer(),
+      drawer: NewsDrawer(),
       appBar: AppBar(
         title: Text("Demo"),
         actions: [
@@ -46,13 +46,13 @@ class _NewsListState extends State<NewsList> {
       ),
       body: BlocBuilder<NewsListBloc, NewsListState>(
           bloc: widget._bloc,
-          builder: (BuildContext context, NewsListState productsListState) {
-            if (productsListState is NewsListLoading) {
+          builder: (BuildContext context, NewsListState newsListState) {
+            if (newsListState is NewsListLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (productsListState is NewsListLoaded) {
-              return NewsListItems(products: productsListState.products);
+            } else if (newsListState is NewsListLoaded) {
+              return NewsListItems(newsList: newsListState.newsList);
             }
 
             return Container(

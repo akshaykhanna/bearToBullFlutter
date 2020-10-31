@@ -1,4 +1,4 @@
-import 'package:starter_flutter/product.dart';
+import 'package:starter_flutter/news.dart';
 
 abstract class NewsListState {}
 
@@ -7,8 +7,8 @@ class NewsListInitial extends NewsListState {}
 class NewsListLoading extends NewsListState {}
 
 class NewsListLoaded extends NewsListState {
-  NewsListLoaded(this.products);
-  final List<Product> products;
+  NewsListLoaded(this.newsList);
+  final List<News> newsList;
 }
 
 class SortNews {
