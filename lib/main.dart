@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starter_flutter/detail_view.dart';
 
 import 'package:starter_flutter/news_list.dart';
 import 'package:starter_flutter/news_list_bloc.dart';
@@ -21,7 +22,11 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: NewsList(bloc: NewsListBloc()),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => NewsList(bloc: NewsListBloc()),
+        '/detail': (context) => DetailView(),
+      },
     );
   }
 }

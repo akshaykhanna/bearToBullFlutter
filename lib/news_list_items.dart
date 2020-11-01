@@ -27,7 +27,9 @@ class NewsListItems extends StatelessWidget {
                 ),
                 subtitle: Text(news.date ?? ''),
                 trailing: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/detail');
+                    },
                     child: Text('Buy', style: TextStyle(color: Colors.white)),
                     color: Colors.green),
                 leading: SizedBox(
