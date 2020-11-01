@@ -22,16 +22,13 @@ class NewsListItems extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(4),
               child: ListTile(
+                onTap: () {
+                  Navigator.pushNamed(context, '/detail');
+                },
                 title: Text(
                   news.title,
                 ),
                 subtitle: Text(news.date ?? ''),
-                trailing: RaisedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/detail');
-                    },
-                    child: Text('Buy', style: TextStyle(color: Colors.white)),
-                    color: Colors.green),
                 leading: SizedBox(
                     width: 80,
                     height: 50,
