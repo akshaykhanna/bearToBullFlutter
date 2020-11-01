@@ -17,10 +17,10 @@ class NewsListItems extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         var news = _newsList[index];
         return Padding(
-          padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
           child: Card(
             child: Padding(
-              padding: const EdgeInsets.all(4),
+              padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
               child: ListTile(
                 onTap: () {
                   Navigator.pushNamed(context, '/detail');
