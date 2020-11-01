@@ -37,7 +37,8 @@ class _NewsListState extends State<NewsList> {
     return Scaffold(
       drawer: NewsDrawer(),
       appBar: AppBar(
-        title: Text("Demo"),
+        backgroundColor: Colors.orange,
+        title: Text("Bear to bull"),
         actions: [
           SortDropDown(
             onSortPressed: onSortPressed(),
