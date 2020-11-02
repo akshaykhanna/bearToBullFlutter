@@ -31,6 +31,8 @@ class NewsListBloc extends Bloc<SortNews, NewsListState> {
     // }
     var response = await http.get(url);
     var jsonBody = jsonDecode(response.body);
-    return newsfromJson(jsonBody);
+    var newsList = newsfromJson(jsonBody);
+    newsList.sort((a, b) => a.id > b.id ? -1 : 1);
+    return newsList;
   }
 }
