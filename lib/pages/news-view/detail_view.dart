@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:starter_flutter/pages/news-view/news_card.dart';
 
 import '../../model/news.dart';
 
@@ -13,26 +14,7 @@ class DetailView extends StatelessWidget {
         title: Text("Detail View"),
         backgroundColor: Colors.orange,
       ),
-      body: Card(
-        child: Column(
-          children: [
-            Image.network(args.imageUrl, fit: BoxFit.fitWidth),
-            Text(
-              args.title,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              args.description,
-              style: TextStyle(fontSize: 18),
-            ),
-            IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context);
-                })
-          ],
-        ),
-      ),
+      body: NewsCard(args: args),
     );
   }
 }
