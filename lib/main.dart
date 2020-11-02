@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.indigo,
+        backgroundColor: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: '/',

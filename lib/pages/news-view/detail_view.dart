@@ -19,7 +19,11 @@ class DetailView extends StatelessWidget {
             Image.network(args.imageUrl, fit: BoxFit.fitWidth),
             Text(
               args.title,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              args.description,
+              style: TextStyle(fontSize: 18),
             ),
             IconButton(
                 icon: Icon(Icons.arrow_back),
