@@ -8,11 +8,19 @@ class DetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     final News args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(actions: [], title: Text("Detail View")),
+      appBar: AppBar(
+        actions: [],
+        title: Text("Detail View"),
+        backgroundColor: Colors.orange,
+      ),
       body: Card(
         child: Column(
           children: [
-            Text(args.title),
+            Image.network(args.imageUrl, fit: BoxFit.fitWidth),
+            Text(
+              args.title,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             IconButton(
                 icon: Icon(Icons.arrow_back),
                 onPressed: () {
