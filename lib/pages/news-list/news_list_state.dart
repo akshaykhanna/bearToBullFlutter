@@ -1,4 +1,4 @@
-import 'package:starter_flutter/news.dart';
+import 'package:starter_flutter/model/news.dart';
 
 abstract class NewsListState {}
 

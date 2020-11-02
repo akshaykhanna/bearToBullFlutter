@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_flutter/news_drawer.dart';
-import 'package:starter_flutter/news_list_bloc.dart';
-import 'package:starter_flutter/news_list_state.dart';
-import 'package:starter_flutter/sort-dropdown.dart';
+import 'package:starter_flutter/shared/news_drawer.dart';
+import 'package:starter_flutter/bloc/news_list_bloc.dart';
+import 'package:starter_flutter/pages/news-list/news_list_state.dart';
+import 'package:starter_flutter/pages/news-list/sort-dropdown.dart';
 
 import 'news_list_items.dart';
 

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_flutter/news.dart';
-import 'package:starter_flutter/news_list_state.dart';
+import 'package:starter_flutter/model/news.dart';
+import 'package:starter_flutter/pages/news-list/news_list_state.dart';
 import 'package:http/http.dart' as http;
 
 class NewsListBloc extends Bloc<SortNews, NewsListState> {
