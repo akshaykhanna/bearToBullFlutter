@@ -25,11 +25,6 @@ class NewsCard extends StatelessWidget {
             args.description,
             style: TextStyle(fontSize: 18),
           ),
-          IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              })
         ],
       ),
     );
