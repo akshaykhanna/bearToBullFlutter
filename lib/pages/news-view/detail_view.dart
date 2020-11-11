@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:starter_flutter/pages/news-view/news_card.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 
-import '../../model/news.dart';
+import '../../models/news.dart';
 
 class DetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final News args = ModalRoute.of(context).settings.arguments;
-    var id;
     return Scaffold(
         appBar: AppBar(
           actions: [],
