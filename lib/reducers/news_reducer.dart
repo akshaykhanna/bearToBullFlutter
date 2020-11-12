@@ -52,7 +52,7 @@ NewsState newsReducer(NewsState state, FSA action) {
 }
 
 List<News> newsListFromJSONStr(dynamic payload) {
-  var jsonBody = jsonDecode(payload.body);
+  var jsonBody = jsonDecode(payload);
   var newsList = newsfromJson(jsonBody);
   newsList.sort((a, b) => a.id > b.id ? -1 : 1);
   return newsList;

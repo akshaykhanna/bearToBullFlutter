@@ -8,7 +8,6 @@ import 'package:starter_flutter/models/app_state.dart';
 import 'package:starter_flutter/pages/news-view/detail_view.dart';
 
 import 'package:starter_flutter/pages/news-list/news_list.dart';
-import 'package:starter_flutter/bloc/news_list_bloc.dart';
 import 'package:starter_flutter/reducers/app_reducer.dart';
 import 'package:starter_flutter/routes.dart';
 
@@ -36,7 +35,7 @@ class MyApp extends StatelessWidget {
           ),
           initialRoute: '/',
           routes: {
-            AppRoutes.newsList: (context) => NewsList(bloc: NewsListBloc()),
+            AppRoutes.newsList: (context) => NewsList(),
             AppRoutes.newsDetails: (context) => DetailView(),
           },
         ));
