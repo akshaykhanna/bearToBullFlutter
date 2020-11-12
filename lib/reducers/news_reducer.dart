@@ -6,7 +6,7 @@ import 'package:starter_flutter/actions/news_actions.dart';
 import 'package:starter_flutter/models/news.dart';
 import 'package:starter_flutter/models/news_state.dart';
 
-NewsState userReducer(NewsState state, FSA action) {
+NewsState newsReducer(NewsState state, FSA action) {
   NewsState newState = state;
 
   switch (action.type) {
