@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:redux/redux.dart';
+import 'package:starter_flutter/actions/news_actions.dart';
+import 'package:starter_flutter/models/app_state.dart';
+import 'package:starter_flutter/models/news_state.dart';
 import 'package:starter_flutter/shared/news_drawer.dart';
 import 'package:starter_flutter/bloc/news_list_bloc.dart';
 import 'package:starter_flutter/pages/news-list/news_list_state.dart';
@@ -63,4 +67,24 @@ class _NewsListState extends State<NewsList> {
           }),
     );
   }
+}
+
+class NewsListScreenProps {
+  final Function getNewsList;
+  // final Function getUserDetails;
+  final ListNewsState listResponse;
+
+  NewsListScreenProps({
+    this.getNewsList,
+    this.listResponse,
+    // this.getUserDetails,
+  });
+}
+
+NewsListScreenProps mapStateToProps(Store<AppState> store) {
+  return NewsListScreenProps(
+    listResponse: store.state.news.list,
+    getNewsList: () => store.dispatch(getNewsList()),
+    // getUserDetails: (int id) => store.dispatch(getUserDetails(id)),
+  );
 }
