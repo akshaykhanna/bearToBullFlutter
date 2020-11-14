@@ -20,7 +20,7 @@ class _SwipeCardsState extends State<SwipeCards> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    CardController controller; //Use this to trigger swap.
+    // CardController controller; //Use this to trigger swap.
 
     return new Scaffold(
       body: new Center(
@@ -44,7 +44,7 @@ class _SwipeCardsState extends State<SwipeCards> with TickerProviderStateMixin {
                 style: TextStyle(fontSize: 40),
               ),
             ),
-            cardController: controller = CardController(),
+            // cardController: controller = CardController(),
             swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
               /// Get swiping card's alignment
               if (align.x < 0) {
