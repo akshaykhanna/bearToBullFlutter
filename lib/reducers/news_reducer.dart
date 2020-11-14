@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
 import 'package:redux_api_middleware/redux_api_middleware.dart';
 
 import 'package:starter_flutter/actions/news_actions.dart';
@@ -38,6 +39,8 @@ NewsState newsReducer(NewsState state, FSA action) {
       newState.details.error = null;
       newState.details.loading = false;
       // newState.details.data = userFromJSONStr(action.payload);
+      newState.details.data = state.list.data
+          .firstWhere((element) => element.id == cast<int>(action.payload));
       return newState;
 
     case GET_NEWS_DETAILS_FAILURE:

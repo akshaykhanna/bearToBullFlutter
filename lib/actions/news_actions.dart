@@ -31,20 +31,23 @@ const GET_NEWS_DETAILS_REQUEST = 'GET_NEWS_DETAILS_REQUEST';
 const GET_NEWS_DETAILS_SUCCESS = 'GET_NEWS_DETAILS_SUCCESS';
 const GET_NEWS_DETAILS_FAILURE = 'GET_NEWS_DETAILS_FAILURE';
 
-RSAA getNewsDetailsRequest(int id) {
-  return RSAA(
-    method: 'GET',
-    endpoint: 'http://jsonplaceholder.typicode.com/users/$id',
-    types: [
-      GET_NEWS_DETAILS_REQUEST,
-      GET_NEWS_DETAILS_SUCCESS,
-      GET_NEWS_DETAILS_FAILURE,
-    ],
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  );
+FSA getNewsDetailsRequest(int id) {
+  return FSA(type: GET_NEWS_DETAILS_SUCCESS, payload: id);
 }
+// RSAA getNewsDetailsRequest(int id) {
+//   return RSAA(
+//     method: 'GET',
+//     endpoint: 'http://jsonplaceholder.typicode.com/users/$id',
+//     types: [
+//       GET_NEWS_DETAILS_REQUEST,
+//       GET_NEWS_DETAILS_SUCCESS,
+//       GET_NEWS_DETAILS_FAILURE,
+//     ],
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   );
+// }
 
 ThunkAction<AppState> getNewsDetails(int id) =>
     (Store<AppState> store) => store.dispatch(getNewsDetailsRequest(id));
