@@ -23,7 +23,7 @@ class NewsListItems extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
               child: ListTile(
                 onTap: () {
-                  Navigator.pushNamed(context, '/detail', arguments: news);
+                  Navigator.pushNamed(context, '/detail', arguments: news.id);
                 },
                 title: Text(
                   news.title,
